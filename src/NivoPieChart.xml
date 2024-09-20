@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="addverb.nivopiechart.NivoPieChart" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Nivo Responsive Pie Chart</name>
+    <description>Responsive Pie chart ported from Nivo charts library.</description>
+    <icon/>
+    <properties>
+        <!-- Data Source -->
+        <propertyGroup caption="Data Source">
+            <!-- Data -->
+            <property key="data" type="expression" required="true">
+                <caption>Chart Data (JSON)</caption>
+                <description>The json data should be compatible with type TNivoResponsiveLineData[]. (Please see the docs)</description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Start Angle -->
+            <property key="startAngle" type="integer" defaultValue="0">
+                <caption>Start angle</caption>
+                <description>Start angle (in degrees), useful to make gauges for example.</description>
+            </property>
+
+            <!-- End Angle -->
+            <property key="endAngle" type="integer" defaultValue="0">
+                <caption>End angle</caption>
+                <description>End angle (in degrees), useful to make gauges for example.</description>
+            </property>
+
+            <!-- Legends Type -->
+            <property key="legendsType" type="enumeration" defaultValue="default">
+                <caption>Legends (JSON)</caption>
+                <description>Legends for the chart.</description>
+                <enumerationValues>
+                    <enumerationValue key="default">Default</enumerationValue>
+                    <enumerationValue key="no">No</enumerationValue>
+                    <enumerationValue key="specify">Specify</enumerationValue>
+                </enumerationValues>
+            </property>
+
+            <!-- Legends -->
+            <property key="legends" type="expression" required="false">
+                <caption>Legends JSON Data</caption>
+                <description>The json data should be compatible with type LegendData[]. (Please see the Nivo docs)</description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Theme Type -->
+            <property key="themeType" type="enumeration" defaultValue="default">
+                <caption>Theme (JSON)</caption>
+                <description>Theme for the chart.</description>
+                <enumerationValues>
+                    <enumerationValue key="default">Default</enumerationValue>
+                    <enumerationValue key="specify">Specify</enumerationValue>
+                </enumerationValues>
+            </property>
+
+            <!-- Theme -->
+            <property key="theme" type="expression" required="false">
+                <caption>Theme JSON Data</caption>
+                <description>The json data should be compatible with type CompleteTheme. (Please see the Nivo docs)</description>
+                <returnType type="String" />
+            </property>
+
+            <!-- System Properties -->
+            <systemProperty key="Visibility" />
+        </propertyGroup>
+
+        <!-- Properties -->
+        <propertyGroup caption="Properties">
+            <!-- Fit -->
+            <property key="fit" type="boolean" defaultValue="true">
+                <caption>Fit</caption>
+                <description>If yes, pie will be optimized to occupy more space when using partial pie.</description>
+            </property>
+
+            <!-- Animate -->
+            <property key="animate" type="boolean" defaultValue="true">
+                <caption>Animate</caption>
+                <description>Animate tooltips and when data changes.</description>
+            </property>
+
+            <!-- Inner Radius -->
+            <property key="innerRadius" type="decimal" defaultValue="0.5">
+                <caption>Inner radius</caption>
+                <description>Donut chart if greater than 0. Value should be between 0~1 as it's a ratio from original radius.</description>
+            </property>
+
+            <!-- Active Inner Radius Offset -->
+            <property key="activeInnerRadiusOffset" type="integer" defaultValue="0">
+                <caption>Active inner radius offset</caption>
+                <description>Extends active slice inner radius.</description>
+            </property>
+
+            <!-- Active Outer Radius Offset -->
+            <property key="activeOuterRadiusOffset" type="integer" defaultValue="8">
+                <caption>Active outer radius offset</caption>
+                <description>Extends active slice outer radius.</description>
+            </property>
+
+            <!-- Pad Angle -->
+            <property key="padAngle" type="decimal" defaultValue="0.7">
+                <caption>Pad angle</caption>
+                <description>Padding between each pie slice.</description>
+            </property>
+
+            <!-- Corner Radius -->
+            <property key="cornerRadius" type="decimal" defaultValue="3">
+                <caption>Corner radius</caption>
+                <description>Rounded slices.</description>
+            </property>
+
+            <!-- Enable Borders -->
+            <property key="enableBorders" type="boolean" defaultValue="false">
+                <caption>Enable borders</caption>
+                <description>Render borders for slices.</description>
+            </property>
+
+            <!-- Border Width -->
+            <property key="borderWidth" type="integer" defaultValue="0">
+                <caption>Border width</caption>
+                <description>Slices border width.</description>
+            </property>
+
+            <!-- Border Color -->
+            <property key="borderColor" type="expression" required="false">
+                <caption>Border color</caption>
+                <description>Color of border.</description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Margin Top -->
+            <property key="marginTop" type="integer" defaultValue="50">
+                <caption>Margin Top</caption>
+                <description>Internal margin, gap between top of the chart and its container.</description>
+            </property>
+
+            <!-- Margin Right -->
+            <property key="marginRight" type="integer" defaultValue="110">
+                <caption>Margin Right</caption>
+                <description>Internal margin, gap between right of the chart and its container.</description>
+            </property>
+
+            <!-- Margin Bottom -->
+            <property key="marginBottom" type="integer" defaultValue="50">
+                <caption>Margin Bottom</caption>
+                <description>Internal margin, gap between bottom of the chart and its container.</description>
+            </property>
+
+            <!-- Margin Left -->
+            <property key="marginLeft" type="integer" defaultValue="60">
+                <caption>Margin Left</caption>
+                <description>Internal margin, gap between left of the chart and its container.</description>
+            </property>
+        </propertyGroup>
+
+        <!-- Arc Labels -->
+        <propertyGroup caption="Arc Labels">
+            <!-- Enable Arc Labels -->
+            <property key="enableArcLabels" type="boolean" defaultValue="true">
+                <caption>Enable Arc Labels</caption>
+                <description>Enable labels for arcs.</description>
+            </property>
+
+            <!-- Arc Label -->
+            <property key="arcLabel" type="expression" required="false">
+                <caption>Label</caption>
+                <description>Defines how to get label text, can be a string (used to access current node data property).</description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Arc Labels Radius Offset -->
+            <property key="arcLabelsRadiusOffset" type="decimal" defaultValue="0.5">
+                <caption>Labels radius offset</caption>
+                <description>Define the radius to use to determine the label position, starting from inner radius, this is expressed as a ratio.</description>
+            </property>
+
+            <!-- Arc Labels Skip Angle -->
+            <property key="arcLabelsSkipAngle" type="integer" defaultValue="10">
+                <caption>Labels skip angle</caption>
+                <description></description>
+            </property>
+
+            <!-- Arc Labels Text Color -->
+            <property key="arcLabelsTextColor" type="expression" required="false">
+                <caption>Labels text color</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+        </propertyGroup>
+
+        <!-- Arc Link Labels -->
+        <propertyGroup caption="Arc Link Labels">
+            <!-- Enable Arc Link Labels -->
+            <property key="enableArcLinkLables" type="boolean" defaultValue="true">
+                <caption>Enable Arc Link Labels</caption>
+                <description>Enable link labels for arcs.</description>
+            </property>
+
+            <!-- Arc Link Label -->
+            <property key="arcLinkLabel" type="expression" required="false">
+                <caption>Link label</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Arc Link Labels Skip Angle -->
+            <property key="arcLinkLabelsSkipAngle" type="integer" defaultValue="10">
+                <caption>Link labels skip angle</caption>
+                <description>Skip label if corresponding slice's angle is lower than provided value.</description>
+            </property>
+
+            <!-- Arc Link Labels Offset -->
+            <property key="arcLinkLabelsOffset" type="integer" defaultValue="0">
+                <caption>Link labels offset</caption>
+                <description>Link offset from pie outer radius, useful to have links overlapping pie slices.</description>
+            </property>
+
+            <!-- Arc Link Labels Text Offset -->
+            <property key="arcLinkLabelsTextOffset" type="integer" defaultValue="0">
+                <caption>Link labels text offset</caption>
+                <description>X offset from links' end.</description>
+            </property>
+
+            <!-- Arc Link Labels Straight Length -->
+            <property key="arcLinkLabelsStraightLength" type="integer" defaultValue="24">
+                <caption>Link labels straight length</caption>
+                <description>Length of the straight segment of the links.</description>
+            </property>
+
+            <!-- Arc Link Labels Diagonal Length -->
+            <property key="arcLinkLabelsDiagonalLength" type="integer" defaultValue="16">
+                <caption>Link labels diagonal length</caption>
+                <description>Link diagonal length.</description>
+            </property>
+
+            <!-- Arc Link Labels Thickness -->
+            <property key="arcLinkLabelsThickness" type="integer" defaultValue="2">
+                <caption>Link labels thickness</caption>
+                <description>Links stroke width.</description>
+            </property>
+
+            <!-- Arc Link Labels Color -->
+            <property key="arcLinkLabelsColor" type="expression" required="false">
+                <caption>Link labels color</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Arc Link Labels Text Color -->
+            <property key="arcLinkLabelsTextColor" type="expression" required="false">
+                <caption>Link labels text color</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+        </propertyGroup>
+
+        <!-- Shades -->
+        <propertyGroup caption="Shades">
+            <!-- Colors -->
+            <property key="colors" type="expression" required="false">
+                <caption>Colors (JSON)</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Definitions -->
+            <property key="definitions" type="expression" required="false">
+                <caption>Definitions</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+
+            <!-- Fills -->
+            <property key="fills" type="expression" required="false">
+                <caption>Fill</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
